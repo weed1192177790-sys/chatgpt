@@ -30,7 +30,7 @@
 
 ## 通用高频
 - PPT/演示文稿 → `skills/presentation/ppt-general/SKILL.md`
-- 网页检索、资料调研、核验来源 → `skills/research/web-research/SKILL.md`
+- anysearch、any search、搜索、搜一下、查资料、联网检索、联网搜索、上网查、网上查、网页检索、资料调研、核验来源 → `skills/research/web-research/SKILL.md`
 - 数据分析、统计、图表 → `skills/data/data-analysis/SKILL.md`
 - 图片修改、效果图、设计指令 → `skills/design/image-editing/SKILL.md`
 - GitHub 仓库、代码、issue、PR → `skills/github/github-general/SKILL.md`
@@ -48,3 +48,10 @@
   1. contract-review
   2. contract-rewrite
   3. word-general
+
+## 检索路由优先级
+- 先判断用户意图：明确“不要联网 / 不用联网 / 不联网 / 不要搜索 / 不用搜索 / 禁止联网 / 仅本地 / 只搜索本地 / 只查本地”，或搜索本地文件、仓库代码、聊天记录、表格内内容时，不触发公网检索。
+- anysearch 是 web-research 的工具入口别名；只读取一个检索 Skill，不新增重复调研流程。
+- 采购、法规等跨域请求保留领域 Skill，并在需要公开事实时串联 web-research；例如“联网搜索调酒台厂家” → supplier-search → web-research → supplier-screening。
+- “搜索是什么”等词义解释、引述搜索指令、否定与肯定混合、局部联网等复杂句由代理按上下文判断；不要只依赖关键词。
+- 离线辅助调用：`python3 scripts/route_research.py "帮我查资料"`。输出检索 Skill 路径或 null；该脚本只处理通用检索入口，不替代其他领域路由，也不会发起网络请求。
